@@ -10,7 +10,7 @@
     const protocol = hasLocation ? window.location.protocol : "http:";
 
     if (/github\.io$/i.test(hostname)) {
-      return "https://REPLACE_WITH_YOUR_API_ORIGIN";
+      return "https://tangy-zoos-repair.loca.lt";
     }
 
     return hasLocation
