@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Contact Whimsical Wands for custom wand and painting commissions." />
+  <title>Contact | Whimsical Wands</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="icon" type="image/png" href="assets/images/icon.png" />
+</head>
+<body data-page="contact" data-footer-note="Commissions open year-round.">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <div data-site-header></div>
+  <script src="js/layout.js?v=20260602a"></script>
+
+  <main id="main-content" class="section">
+    <div class="container narrow">
+      <h1>Contact</h1>
+      <p class="section-intro">Tell us about your commission idea and timeline.</p>
+
+      <form class="contact-form" action="#" method="post" novalidate>
+        <label for="name">Name</label>
+        <input id="name" name="name" type="text" autocomplete="name" required />
+
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" autocomplete="email" required />
+
+        <label for="interest">I am interested in</label>
+        <select id="interest" name="interest" required>
+          <option value="">Select one</option>
+          <option value="wand">Custom Wand</option>
+          <option value="painting">Custom Painting</option>
+          <option value="both">Both</option>
+        </select>
+
+        <label for="message">Project details</label>
+        <textarea id="message" name="message" rows="6" required></textarea>
+
+        <button class="btn btn-primary" type="submit">Send Inquiry</button>
+      </form>
+    </div>
+  </main>
+
+  <div data-site-footer></div>
+
+  <script type="module" src="js/auth.js?v=20260601c"></script>
+  <script src="js/currency.js?v=20260601c"></script>
+  <script src="js/main.js?v=20260603b"></script>
+</body>
+</html>
+

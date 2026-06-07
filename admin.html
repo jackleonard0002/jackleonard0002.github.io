@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Admin dashboard for managing products, orders, and analytics." />
+  <title>Admin | Whimsical Wands</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="icon" type="image/png" href="assets/images/icon.png" />
+</head>
+<body data-page="admin" data-footer-note="Admin access is restricted to allowed Google accounts.">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <div data-site-header></div>
+  <script src="js/layout.js?v=20260602a"></script>
+
+  <main id="main-content" class="section">
+    <div class="container">
+      <h1>Admin Dashboard</h1>
+      <p class="section-intro">Manage products, review orders, and track basic product analytics.</p>
+
+      <div id="admin-status" class="admin-status">Checking admin access...</div>
+
+      <section id="admin-dashboard" class="admin-layout" hidden>
+        <nav class="admin-subnav" aria-label="Admin sections">
+          <a class="admin-subnav-link" href="admin.html" data-admin-page-link="theme">Theme Studio</a>
+          <a class="admin-subnav-link" href="admin-products.html" data-admin-page-link="products">Product Manager</a>
+          <a class="admin-subnav-link" href="admin-orders.html" data-admin-page-link="orders">Orders</a>
+          <a class="admin-subnav-link" href="admin-analytics.html" data-admin-page-link="analytics">Analytics</a>
+        </nav>
+
+        <article class="admin-panel admin-section-panel">
+          <h2>Theme Studio</h2>
+          <p class="section-intro">Choose a color theme for the entire website. </p>
+          <div class="theme-controls">
+            <label for="theme-selector">Website Theme</label>
+            <select id="theme-selector" name="theme-selector">
+              <option value="midnight">Midnight Arcana</option>
+              <option value="ember">Ember Forge</option>
+              <option value="forest">Enchanted Forest</option>
+              <option value="amethyst">Amethyst Veil</option>
+              <option value="custom">Custom Palette</option>
+            </select>
+            <div id="theme-custom-panel" class="theme-custom-panel" hidden>
+              <p class="upload-status">Choose three colours for your custom theme.</p>
+              <div class="theme-color-grid">
+                <label>
+                  Base colour
+                  <input id="theme-custom-base" type="color" value="#0E131A" />
+                </label>
+                <label>
+                  Surface colour
+                  <input id="theme-custom-surface" type="color" value="#151C26" />
+                </label>
+                <label>
+                  Accent colour
+                  <input id="theme-custom-accent" type="color" value="#C87544" />
+                </label>
+              </div>
+              <div class="admin-form-actions">
+                <button id="theme-custom-save" class="auth-btn" type="button">Save Custom Theme</button>
+                <button id="theme-custom-reset" class="auth-btn auth-btn-secondary" type="button">Reset Colours</button>
+              </div>
+            </div>
+            <div class="theme-preview-panel" aria-labelledby="theme-current-preview-heading">
+              <div class="theme-preview-header">
+                <h3 id="theme-current-preview-heading">Current theme colours</h3>
+                <p id="theme-current-name" class="upload-status">Midnight Arcana</p>
+              </div>
+              <div class="theme-preview-grid">
+                <div class="theme-preview-item">
+                  <span id="theme-current-base-swatch" class="theme-swatch"></span>
+                  <div>
+                    <strong>Base</strong>
+                    <p id="theme-current-base" class="upload-status">#0E131A</p>
+                  </div>
+                </div>
+                <div class="theme-preview-item">
+                  <span id="theme-current-surface-swatch" class="theme-swatch"></span>
+                  <div>
+                    <strong>Surface</strong>
+                    <p id="theme-current-surface" class="upload-status">#151C26</p>
+                  </div>
+                </div>
+                <div class="theme-preview-item">
+                  <span id="theme-current-accent-swatch" class="theme-swatch"></span>
+                  <div>
+                    <strong>Accent</strong>
+                    <p id="theme-current-accent" class="upload-status">#C87544</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <label class="decor-toggle" for="decor-stars-toggle">
+              <input id="decor-stars-toggle" type="checkbox" />
+              Enable White Stars at Footer
+            </label>
+            <label class="decor-toggle" for="decor-vines-toggle">
+              <input id="decor-vines-toggle" type="checkbox" />
+              Enable White Vines on Banner Sides
+            </label>
+            <label class="decor-toggle" for="decor-roses-toggle">
+              <input id="decor-roses-toggle" type="checkbox" />
+              Enable White Roses (Banner + Footer)
+            </label>
+            <label for="theme-background-file">Website Background Image</label>
+            <div class="image-upload-row">
+              <input id="theme-background-file" type="file" accept="image/png,image/jpeg,image/webp,image/gif" />
+              <div class="admin-form-actions">
+                <button id="theme-background-upload" class="auth-btn" type="button">Upload Background</button>
+                <button id="theme-background-clear" class="auth-btn auth-btn-secondary" type="button">Clear Background</button>
+              </div>
+              <p id="theme-background-status" class="upload-status" aria-live="polite"></p>
+              <p id="theme-background-current" class="upload-status">Current: Default magical forest</p>
+            </div>
+
+            <label for="theme-header-file">Header Overlay Image</label>
+            <div class="image-upload-row">
+              <input id="theme-header-file" type="file" accept="image/png,image/jpeg,image/webp,image/gif" />
+              <div class="admin-form-actions">
+                <button id="theme-header-upload" class="auth-btn" type="button">Upload Header Image</button>
+                <button id="theme-header-clear" class="auth-btn auth-btn-secondary" type="button">Use Default Stars</button>
+              </div>
+              <p id="theme-header-status" class="upload-status" aria-live="polite"></p>
+              <p id="theme-header-current" class="upload-status">Current: Default stars</p>
+            </div>
+
+            <label for="theme-footer-file">Footer Overlay Image</label>
+            <div class="image-upload-row">
+              <input id="theme-footer-file" type="file" accept="image/png,image/jpeg,image/webp,image/gif" />
+              <div class="admin-form-actions">
+                <button id="theme-footer-upload" class="auth-btn" type="button">Upload Footer Image</button>
+                <button id="theme-footer-clear" class="auth-btn auth-btn-secondary" type="button">Use Default Stars</button>
+              </div>
+              <p id="theme-footer-status" class="upload-status" aria-live="polite"></p>
+              <p id="theme-footer-current" class="upload-status">Current: Default stars</p>
+            </div>
+          </div>
+        </article>
+      </section>
+    </div>
+  </main>
+
+  <div data-site-footer></div>
+
+  <script type="module" src="js/auth.js?v=20260601d"></script>
+  <script src="js/currency.js?v=20260601d"></script>
+  <script src="js/products.js?v=20260601d"></script>
+  <script src="js/main.js?v=20260603b"></script>
+  <script src="js/admin.js?v=20260602d"></script>
+</body>
+</html>
+

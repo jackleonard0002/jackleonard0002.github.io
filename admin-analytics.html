@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Admin analytics view for Whimsical Wands." />
+  <title>Admin Analytics | Whimsical Wands</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="icon" type="image/png" href="assets/images/icon.png" />
+</head>
+<body data-page="admin" data-footer-note="Admin access is restricted to allowed Google accounts.">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <div data-site-header></div>
+  <script src="js/layout.js?v=20260602a"></script>
+
+  <main id="main-content" class="section">
+    <div class="container">
+      <h1>Admin Dashboard</h1>
+      <p class="section-intro">Manage products, review orders, and track basic product analytics.</p>
+
+      <div id="admin-status" class="admin-status">Checking admin access...</div>
+
+      <section id="admin-dashboard" class="admin-layout" hidden>
+        <nav class="admin-subnav" aria-label="Admin sections">
+          <a class="admin-subnav-link" href="admin.html" data-admin-page-link="theme">Theme Studio</a>
+          <a class="admin-subnav-link" href="admin-products.html" data-admin-page-link="products">Product Manager</a>
+          <a class="admin-subnav-link" href="admin-orders.html" data-admin-page-link="orders">Orders</a>
+          <a class="admin-subnav-link" href="admin-analytics.html" data-admin-page-link="analytics">Analytics</a>
+        </nav>
+
+        <article class="admin-panel admin-section-panel">
+          <h2>Analytics</h2>
+          <div class="analytics-cards">
+            <div class="analytics-card">
+              <p>Total Orders</p>
+              <h3 id="metric-orders">0</h3>
+            </div>
+            <div class="analytics-card">
+              <p>Total Revenue</p>
+              <h3 id="metric-revenue">£0.00</h3>
+            </div>
+            <div class="analytics-card">
+              <p>Top Product</p>
+              <h3 id="metric-top-product">None</h3>
+            </div>
+          </div>
+          <div id="analytics-table" class="admin-list"></div>
+        </article>
+      </section>
+    </div>
+  </main>
+
+  <div data-site-footer></div>
+
+  <script type="module" src="js/auth.js?v=20260601c"></script>
+  <script src="js/currency.js?v=20260601c"></script>
+  <script src="js/products.js?v=20260601c"></script>
+  <script src="js/main.js?v=20260603b"></script>
+  <script src="js/admin.js?v=20260602d"></script>
+</body>
+</html>
+

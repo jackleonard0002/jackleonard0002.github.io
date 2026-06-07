@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Manage your Whimsical Wands account settings." />
+  <title>Settings | Whimsical Wands</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="icon" type="image/png" href="assets/images/icon.png" />
+</head>
+<body data-page="settings" data-footer-note="Settings synced to your signed-in account.">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <div data-site-header></div>
+  <script src="js/layout.js?v=20260602a"></script>
+
+  <main id="main-content" class="section">
+    <div class="container">
+      <h1>Settings</h1>
+      <p class="section-intro">Manage your preferred display currency and saved shipping address.</p>
+
+      <section class="settings-grid" aria-label="Account settings">
+        <article class="settings-panel" aria-labelledby="settings-currency-heading">
+          <p class="eyebrow">Display</p>
+          <h2 id="settings-currency-heading">Currency</h2>
+          <p>Choose the currency used across product prices and cart totals.</p>
+          <div id="settings-currency-slot" class="settings-currency-slot"></div>
+        </article>
+
+        <article class="settings-panel" aria-labelledby="settings-address-heading">
+          <div class="checkout-panel__header">
+            <div>
+              <p class="eyebrow">Account</p>
+              <h2 id="settings-address-heading">Address manager</h2>
+            </div>
+            <p class="checkout-note">Saved to your signed-in account and reused at checkout.</p>
+          </div>
+
+          <p id="settings-address-status" class="settings-address-status" aria-live="polite">Sign in to load and save your address.</p>
+
+          <form id="settings-address-form" class="shipping-form">
+            <div class="form-grid">
+              <label>
+                Full name
+                <input id="shipping-full-name" name="fullName" type="text" autocomplete="name" required />
+              </label>
+              <label>
+                Email
+                <input id="shipping-email" name="email" type="email" autocomplete="email" />
+              </label>
+              <label>
+                Phone
+                <input id="shipping-phone" name="phone" type="tel" autocomplete="tel" />
+              </label>
+              <label class="full-width">
+                Address line 1
+                <input id="shipping-line1" name="line1" type="text" autocomplete="address-line1" required />
+              </label>
+              <label class="full-width">
+                Address line 2
+                <input id="shipping-line2" name="line2" type="text" autocomplete="address-line2" />
+              </label>
+              <label>
+                City
+                <input id="shipping-city" name="city" type="text" autocomplete="address-level2" required />
+              </label>
+              <label>
+                State / region
+                <input id="shipping-region" name="region" type="text" autocomplete="address-level1" required />
+              </label>
+              <label>
+                Postal code
+                <input id="shipping-postal-code" name="postalCode" type="text" autocomplete="postal-code" required />
+              </label>
+              <label>
+                Country
+                <input id="shipping-country" name="country" type="text" autocomplete="country-name" required />
+              </label>
+              <label class="full-width">
+                Delivery note
+                <textarea id="shipping-delivery-note" name="deliveryNote" rows="3" placeholder="Gate code, preferred delivery time, gift note, etc."></textarea>
+              </label>
+            </div>
+
+            <div>
+              <button id="settings-address-save" class="btn btn-primary" type="submit">Save address</button>
+              <a class="auth-btn" href="signin.html?returnTo=settings.html">Sign in</a>
+            </div>
+          </form>
+        </article>
+      </section>
+    </div>
+  </main>
+
+  <div data-site-footer></div>
+
+  <script type="module" src="js/auth.js?v=20260601c"></script>
+  <script src="js/currency.js?v=20260601c"></script>
+  <script src="js/main.js?v=20260603b"></script>
+  <script src="js/settings.js?v=20260602a"></script>
+</body>
+</html>

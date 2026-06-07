@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Sign in to Whimsical Wands." />
+  <title>Sign In | Whimsical Wands</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="icon" type="image/png" href="assets/images/icon.png" />
+</head>
+<body data-page="signin" data-footer-note="Sign in to save your cart and manage your account.">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <div data-site-header></div>
+  <script src="js/layout.js?v=20260602a"></script>
+
+  <main id="main-content" class="section">
+    <div class="container signin-shell">
+      <section class="signin-card" aria-labelledby="signin-title">
+        <p class="eyebrow">Welcome Back</p>
+        <h1 id="signin-title">Sign in to Whimsical Wands</h1>
+        <p class="section-intro">Choose a sign-in method. Google works now, and more options are available to choose from below.</p>
+
+        <div class="signin-options" role="group" aria-label="Sign-in methods">
+          <button id="google-login-button" class="signin-option signin-option-primary" type="button">Continue with Google</button>
+          <button class="signin-option" type="button" data-signin-provider="email">Continue with Email</button>
+          <button class="signin-option" type="button" data-signin-provider="apple">Continue with Apple</button>
+          <button class="signin-option" type="button" data-signin-provider="github">Continue with GitHub</button>
+          <button class="signin-option" type="button" data-signin-provider="magic-link">Use Magic Link</button>
+        </div>
+
+        <p id="signin-status" class="signin-status" aria-live="polite">Not signed in.</p>
+        <a id="signin-continue" class="btn btn-primary" href="shop.html" hidden>Continue to Shop</a>
+      </section>
+    </div>
+  </main>
+
+  <div data-site-footer></div>
+
+  <script type="module" src="js/auth.js?v=20260601c"></script>
+  <script src="js/currency.js?v=20260601c"></script>
+    <script src="js/main.js?v=20260603b"></script>
+  <script src="js/signin.js?v=20260601c"></script>
+</body>
+</html>
+

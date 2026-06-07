@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Review items in your Whimsical Wands cart." />
+  <title>Cart | Whimsical Wands</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="icon" type="image/png" href="assets/images/icon.png" />
+</head>
+<body data-page="cart" data-footer-note="Cart synced to your signed-in account on this browser.">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <div data-site-header></div>
+  <script src="js/layout.js?v=20260602a"></script>
+
+  <main id="main-content" class="section">
+    <div class="container">
+      <h1>Your Cart</h1>
+      <p class="section-intro" id="cart-owner">Guest cart</p>
+
+      <section class="cart-layout">
+        <div id="cart-items" class="cart-items" aria-live="polite"></div>
+
+        <aside class="cart-summary" aria-label="Order summary">
+          <h2>Summary</h2>
+          <p class="summary-row">
+            <span>Items</span>
+            <span id="summary-count">0</span>
+          </p>
+          <p class="summary-row summary-total">
+            <span>Subtotal</span>
+            <span id="summary-total">£0.00</span>
+          </p>
+          <button id="place-order" class="btn btn-primary" type="button">Place order</button>
+          <button id="clear-cart" class="auth-btn auth-btn-secondary" type="button">Clear cart</button>
+          <a class="btn btn-primary" href="shop.html">Continue shopping</a>
+        </aside>
+      </section>
+
+      <section class="checkout-panel" aria-labelledby="shipping-address-heading">
+        <div class="checkout-panel__header">
+          <div>
+            <p class="eyebrow">Checkout</p>
+            <h2 id="shipping-address-heading">Shipping address</h2>
+          </div>
+          <p class="checkout-note">Saved for the signed-in account on this browser and copied into each order.</p>
+        </div>
+
+        <form id="shipping-address-form" class="shipping-form">
+          <div class="form-grid">
+            <label>
+              Full name
+              <input id="shipping-full-name" name="fullName" type="text" autocomplete="name" required />
+            </label>
+            <label>
+              Email
+              <input id="shipping-email" name="email" type="email" autocomplete="email" />
+            </label>
+            <label>
+              Phone
+              <input id="shipping-phone" name="phone" type="tel" autocomplete="tel" />
+            </label>
+            <label class="full-width">
+              Address line 1
+              <input id="shipping-line1" name="line1" type="text" autocomplete="address-line1" required />
+            </label>
+            <label class="full-width">
+              Address line 2
+              <input id="shipping-line2" name="line2" type="text" autocomplete="address-line2" />
+            </label>
+            <label>
+              City
+              <input id="shipping-city" name="city" type="text" autocomplete="address-level2" required />
+            </label>
+            <label>
+              State / region
+              <input id="shipping-region" name="region" type="text" autocomplete="address-level1" required />
+            </label>
+            <label>
+              Postal code
+              <input id="shipping-postal-code" name="postalCode" type="text" autocomplete="postal-code" required />
+            </label>
+            <label>
+              Country
+              <input id="shipping-country" name="country" type="text" autocomplete="country-name" required />
+            </label>
+            <label class="full-width">
+              Delivery note
+              <textarea id="shipping-delivery-note" name="deliveryNote" rows="3" placeholder="Gate code, preferred delivery time, gift note, etc."></textarea>
+            </label>
+          </div>
+
+          <label class="save-address-row">
+            <input id="save-shipping-address" type="checkbox" checked />
+            Save this shipping address for next time
+          </label>
+        </form>
+      </section>
+    </div>
+  </main>
+
+  <div data-site-footer></div>
+
+  <script type="module" src="js/auth.js?v=20260601c"></script>
+  <script src="js/currency.js?v=20260601c"></script>
+  <script src="js/products.js?v=20260601c"></script>
+    <script src="js/main.js?v=20260603b"></script>
+  <script src="js/cart.js?v=20260601c"></script>
+</body>
+</html>
+

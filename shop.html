@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Shop custom wands and paintings at Whimsical Wands." />
+  <title>Shop | Whimsical Wands</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="icon" type="image/png" href="assets/images/icon.png" />
+</head>
+<body data-page="shop" data-footer-note="Small batch creations, made with care.">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <div data-site-header></div>
+  <script src="js/layout.js?v=20260602a"></script>
+
+  <main id="main-content" class="section">
+    <div class="container">
+      <h1>Shop the Collection</h1>
+      <p class="section-intro">Filter by category to find your next magical piece.</p>
+
+      <div class="filter-bar" role="toolbar" aria-label="Filter products by category">
+        <button class="filter-btn active" data-filter="all" aria-pressed="true">All</button>
+        <button class="filter-btn" data-filter="wand" aria-pressed="false">Wands</button>
+        <button class="filter-btn" data-filter="painting" aria-pressed="false">Paintings</button>
+      </div>
+
+      <section id="product-grid" class="product-grid" aria-live="polite"></section>
+    </div>
+  </main>
+
+  <div data-site-footer></div>
+
+  <script type="module" src="js/auth.js?v=20260601c"></script>
+  <script src="js/currency.js?v=20260601c"></script>
+  <script src="js/products.js?v=20260601c"></script>
+    <script src="js/main.js?v=20260603b"></script>
+</body>
+</html>
+
