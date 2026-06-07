@@ -122,3 +122,6 @@ The API exposes:
 Admin data now lives on the backend JSON store in `server/data/store.json`, and admin routes are enforced by Firebase token verification plus the admin allowlist or custom claim.
 
 Shipping addresses are stored per authenticated user in the backend profile store and copied into each order as a snapshot so old orders do not change when a user updates their default address later.
+
+
+- Hellobe
