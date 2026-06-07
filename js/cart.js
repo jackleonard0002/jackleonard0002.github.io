@@ -10,7 +10,7 @@
     const protocol = hasLocation ? window.location.protocol : "http:";
 
     if (/github\.io$/i.test(hostname)) {
-      return "https://tangy-zoos-repair.loca.lt";
+      return "https://four-boxes-fold.loca.lt";
     }
 
     return hasLocation
