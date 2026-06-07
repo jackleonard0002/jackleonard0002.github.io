@@ -11,6 +11,22 @@ function parseBearerToken(req) {
   return token;
 }
 
+function getAdminEmails() {
+  return String(process.env.ADMIN_EMAILS || "")
+    .split(",")
+    .map((email) => email.trim().toLowerCase())
+    .filter(Boolean);
+}
+
+function isAdminUser(user) {
+  if (!user || !user.email) {
+    return false;
+  }
+
+  const adminEmails = getAdminEmails();
+  return adminEmails.includes(String(user.email).toLowerCase());
+}
+
 async function optionalAuth(req, _res, next) {
   const token = parseBearerToken(req);
   if (!token) {
@@ -49,14 +65,7 @@ function requireAdmin(req, res, next) {
     return res.status(401).json({ error: "Authentication required" });
   }
 
-  const adminEmails = String(process.env.ADMIN_EMAILS || "")
-    .split(",")
-    .map((email) => email.trim().toLowerCase())
-    .filter(Boolean);
-
-  const isAllowlisted = user.email && adminEmails.includes(String(user.email).toLowerCase());
-
-  if (!isAllowlisted) {
+  if (!isAdminUser(user)) {
     return res.status(403).json({ error: "Admin email required" });
   }
 
@@ -66,5 +75,6 @@ function requireAdmin(req, res, next) {
 module.exports = {
   optionalAuth,
   requireAuth,
-  requireAdmin
+  requireAdmin,
+  isAdminUser
 };

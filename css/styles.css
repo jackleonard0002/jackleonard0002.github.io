@@ -686,6 +686,10 @@ a {
   color: #8c3d1f;
 }
 
+.signin-status[data-tone="error"] {
+  color: #9b1c1c;
+}
+
 .user-chip {
   display: inline-flex;
   align-items: center;

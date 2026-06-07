@@ -53,6 +53,28 @@ function hasFirebaseConfig(config) {
   });
 }
 
+function getFriendlyAuthErrorMessage(error) {
+  const code = String(error && error.code || "").toLowerCase();
+
+  if (code === "auth/unauthorized-domain") {
+    return "Google sign-in is blocked for this site domain. Add this domain in Firebase Authentication > Settings > Authorized domains.";
+  }
+
+  if (code === "auth/popup-blocked") {
+    return "Your browser blocked the Google popup. Allow popups for this site and try again.";
+  }
+
+  if (code === "auth/popup-closed-by-user") {
+    return "Google sign-in popup was closed before completing sign-in.";
+  }
+
+  if (code === "auth/operation-not-allowed") {
+    return "Google sign-in is not enabled in Firebase Authentication for this project.";
+  }
+
+  return "Google sign-in failed. Check browser console for details.";
+}
+
 function applyLoggedOutUI(elements, disabledMessage) {
   elements.signInLinks.forEach(function (link) {
     link.hidden = false;
@@ -159,7 +181,9 @@ function initGoogleAuth() {
         await signInWithPopup(auth, provider);
       } catch (error) {
         console.error("Google sign-in failed", error);
-        alert("Google sign-in failed. Check console for details.");
+        const message = getFriendlyAuthErrorMessage(error);
+        window.dispatchEvent(new CustomEvent("ww-auth-error", { detail: { code: error && error.code, message } }));
+        alert(message);
       }
     });
   }

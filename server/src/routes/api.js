@@ -6,7 +6,7 @@ const multer = require("multer");
 const AdmZip = require("adm-zip");
 const { z } = require("zod");
 const { getProducts, saveProducts, getOrders, saveOrders, getUserProfile, saveUserProfile, getSiteSettings, saveSiteSettings } = require("../store");
-const { requireAuth, requireAdmin } = require("../auth");
+const { requireAuth, requireAdmin, isAdminUser } = require("../auth");
 
 const router = express.Router();
 
@@ -304,6 +304,19 @@ function computeAnalytics(orders) {
 
 router.get("/health", (_req, res) => {
   res.json({ ok: true, service: "whimsical-wands-api" });
+});
+
+router.get("/auth/session", requireAuth, (req, res) => {
+  res.json({
+    ok: true,
+    user: {
+      uid: req.user.uid,
+      email: req.user.email || "",
+      displayName: req.user.name || req.user.email || "",
+      photoURL: req.user.picture || ""
+    },
+    isAdmin: isAdminUser(req.user)
+  });
 });
 
 router.get("/products", async (_req, res, next) => {

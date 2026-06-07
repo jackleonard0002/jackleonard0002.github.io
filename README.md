@@ -80,7 +80,8 @@ Important:
 3. Go to Authentication > Sign-in method and enable Google provider.
 4. Add authorized domains:
 	- `localhost` for local testing
-	- your production domain when deployed
+	- `jackleonard0002.github.io` for your GitHub Pages frontend
+	- `loca.lt` for localtunnel popup redirects
 5. Open `js/auth.js` and replace:
 	- `REPLACE_WITH_FIREBASE_API_KEY`
 	- `REPLACE_WITH_FIREBASE_AUTH_DOMAIN`
@@ -101,6 +102,7 @@ When configured, the header will show a `Sign in with Google` button and display
 The API exposes:
 
 - `GET /api/health`
+- `GET /api/auth/session` for signed-in users (token verification check)
 - `GET /api/products`
 - `POST /api/orders` for signed-in users
 - `GET /api/me/address` for signed-in users
@@ -112,6 +114,16 @@ The API exposes:
 - `DELETE /api/admin/products/:id` for admins
 - `GET /api/admin/orders` for admins
 - `GET /api/admin/analytics` for admins
+
+## Google Sign-In With GitHub Pages + Localtunnel
+
+1. Keep API running: `node server/src/index.js`.
+2. Keep localtunnel running: `npx --yes localtunnel --port 8787`.
+3. Ensure `FRONTEND_ORIGIN=https://jackleonard0002.github.io` in API `.env`.
+4. Ensure Firebase Admin credentials are available to API (`FIREBASE_SERVICE_ACCOUNT_JSON` or ADC).
+5. Open `signin.html` on GitHub Pages and click Google sign-in.
+
+When setup is correct, the sign-in page status will show `Server verified` after Google login.
 
 ## Admin Access Setup
 
