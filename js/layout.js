@@ -37,7 +37,10 @@
         return [
             '<header class="site-header">',
             '  <div class="container nav-wrap">',
-            '    <a class="brand" href="index.html" aria-label="Whimsical Wands home"><img class="brand-logo" src="assets/images/whimiscal-wands-lgog.png" alt="Whimsical Wands" /></a>',
+            '    <div class="brand-cluster">',
+            '      <a class="brand" href="index.html" aria-label="Whimsical Wands home"><img class="brand-logo" src="assets/images/whimiscal-wands-lgog.png" alt="Whimsical Wands" /></a>',
+            '      <span id="server-status-indicator" class="server-status-pill" role="status" aria-live="polite">Server: Checking...</span>',
+            '    </div>',
             '    <button class="menu-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation menu">Menu</button>',
             '    <nav id="site-nav" class="site-nav" aria-label="Main navigation">',
             '      <div class="nav-utility">',

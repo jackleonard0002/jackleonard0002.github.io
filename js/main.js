@@ -579,6 +579,42 @@
     function syncCartCountFromStorage() {
         setCartCount(getCartCount());
     }
+    
+        async function refreshServerStatusIndicator() {
+            const indicator = document.getElementById("server-status-indicator");
+            if (!indicator) {
+                return;
+            }
+
+            indicator.textContent = "Server: Checking...";
+            indicator.classList.remove("is-connected", "is-disconnected");
+
+            const controller = typeof AbortController === "function" ? new AbortController() : null;
+            const timeout = controller
+                ? window.setTimeout(function () {
+                    controller.abort();
+                }, 3500)
+                : null;
+
+            try {
+                const response = await fetch(API_BASE + "/api/health?ts=" + Date.now(), controller ? { signal: controller.signal } : undefined);
+                if (response.ok) {
+                    indicator.textContent = "Server: Connected";
+                    indicator.classList.add("is-connected");
+                    return;
+                }
+
+                indicator.textContent = "Server: Disconnected";
+                indicator.classList.add("is-disconnected");
+            } catch (error) {
+                indicator.textContent = "Server: Disconnected";
+                indicator.classList.add("is-disconnected");
+            } finally {
+                if (timeout !== null) {
+                    window.clearTimeout(timeout);
+                }
+            }
+        }
 
     function addItemToCart(productId) {
         const items = readCartItems();
@@ -1038,6 +1074,7 @@
     window.addEventListener("ww-layout-ready", function () {
         handleHeaderCollapse();
         initPageUi();
+        refreshServerStatusIndicator();
     });
     window.addEventListener("ww-currency-changed", function () {
         rerenderProductsForCurrencyChange();
@@ -1055,6 +1092,7 @@
         handleCartButtonNavigation();
         handleSmoothScroll();
         handleProductFiltering();
+        refreshServerStatusIndicator();
     }
 
     if (document.readyState === "loading") {
