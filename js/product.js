@@ -1,5 +1,18 @@
 (function () {
   const API_BASE = window.WW_API_BASE || (function () {
+    const runtimeOverride = (function () {
+      try {
+        const value = localStorage.getItem("ww_api_base");
+        return typeof value === "string" ? value.trim().replace(/\/+$/, "") : "";
+      } catch (error) {
+        return "";
+      }
+    })();
+
+    if (/^https?:\/\//i.test(runtimeOverride)) {
+      return runtimeOverride;
+    }
+
     const hasLocation = !!(window.location && window.location.hostname);
     const hostname = hasLocation ? window.location.hostname : "";
     const protocol = hasLocation ? window.location.protocol : "http:";

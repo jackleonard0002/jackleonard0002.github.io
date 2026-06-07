@@ -13,6 +13,19 @@
     const DECOR_ROSES_KEY = "ww_decor_roses";
     const CUSTOM_THEME_KEY = "ww_theme_custom";
     const API_BASE = window.WW_API_BASE || (function () {
+        const runtimeOverride = (function () {
+            try {
+                const value = localStorage.getItem("ww_api_base");
+                return typeof value === "string" ? value.trim().replace(/\/+$/, "") : "";
+            } catch (error) {
+                return "";
+            }
+        })();
+
+        if (/^https?:\/\//i.test(runtimeOverride)) {
+            return runtimeOverride;
+        }
+
         const hasLocation = !!(window.location && window.location.hostname);
         const hostname = hasLocation ? window.location.hostname : "";
         const protocol = hasLocation ? window.location.protocol : "http:";
@@ -1063,6 +1076,33 @@
         },
         setState: function (state) {
             return applyDecorations(state || {}, true);
+        }
+    };
+
+    window.WW_API = {
+        getBase: function () {
+            return API_BASE;
+        },
+        setBase: function (url) {
+            const value = String(url || "").trim().replace(/\/+$/, "");
+            if (!/^https?:\/\//i.test(value)) {
+                return false;
+            }
+
+            try {
+                localStorage.setItem("ww_api_base", value);
+                return true;
+            } catch (error) {
+                return false;
+            }
+        },
+        clearBase: function () {
+            try {
+                localStorage.removeItem("ww_api_base");
+                return true;
+            } catch (error) {
+                return false;
+            }
         }
     };
 
