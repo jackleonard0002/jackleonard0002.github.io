@@ -23,7 +23,7 @@
     const protocol = hasLocation ? window.location.protocol : "http:";
 
     if (/github\.io$/i.test(hostname)) {
-      return "https://four-boxes-fold.loca.lt";
+      return "https://deputy-barrier-gratuit-weight.trycloudflare.com";
     }
 
     return hasLocation
