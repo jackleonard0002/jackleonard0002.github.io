@@ -25,6 +25,14 @@ app.use(cors({
 app.use(express.json({ limit: "1mb" }));
 app.use(morgan("dev"));
 
+app.get("/", (_req, res) => {
+  res.json({
+    ok: true,
+    service: "whimsical-wands-api",
+    health: "/api/health"
+  });
+});
+
 app.use("/api", (req, res, next) => {
   // Auth/admin checks must always reflect current server state.
   res.setHeader("Cache-Control", "no-store, no-cache, must-revalidate, private");
